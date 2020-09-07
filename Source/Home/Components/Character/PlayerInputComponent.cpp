@@ -27,8 +27,8 @@ void UPlayerInputComponent::BindToInputComponent()
 
 	if (InputComponent && OwnerCharacter)
 	{
-		InputComponent->BindAxis("MoveForward", this, &UPlayerInputComponent::MoveForward);
-		InputComponent->BindAxis("MoveRight", this, &UPlayerInputComponent::MoveRight);
+		//InputComponent->BindAxis("MoveForward", this, &UPlayerInputComponent::MoveForward);
+		//InputComponent->BindAxis("MoveRight", this, &UPlayerInputComponent::MoveRight);
 		InputComponent->BindAxis("Turn", this, &UPlayerInputComponent::Turn);
 		InputComponent->BindAxis("LookUp", this, &UPlayerInputComponent::LookUp);
 	}
