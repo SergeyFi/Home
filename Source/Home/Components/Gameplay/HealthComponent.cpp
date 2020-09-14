@@ -72,7 +72,7 @@ void UHealthComponent::StopRegeneration()
 	GetWorld()->GetTimerManager().ClearTimer(TimerRegHealth);
 }
 
-void UHealthComponent::TakeDamage(float Damage, AActor* Instigator)
+void UHealthComponent::ApplyDamage(float Damage, AActor* Instigator)
 {
 	OnDamage.Broadcast(Damage, Instigator);
 

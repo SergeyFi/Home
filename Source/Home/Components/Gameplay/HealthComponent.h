@@ -33,7 +33,7 @@ public:
 	
 	void  StopRegeneration();
 	
-	void  TakeDamage(float Damage, AActor* Instigator = nullptr);
+	void  ApplyDamage(float Damage, AActor* Instigator = nullptr);
 	
 	FHealthDelegate OnDamage;
 	FHealthDelegate OnHealthEnd;
