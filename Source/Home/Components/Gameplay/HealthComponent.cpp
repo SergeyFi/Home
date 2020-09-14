@@ -7,9 +7,7 @@
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
+	PrimaryComponentTick.bCanEverTick = false;
 	Health = 100.f;
 	MaxHealth = Health;
     RegHealth = 1.f;
@@ -22,22 +20,22 @@ void UHealthComponent::BeginPlay()
 	Super::BeginPlay();	
 }
 
-void UHealthComponent::SetHealth(float Live)
+void UHealthComponent::SetHealth(float NewHealth)
 {
-	Health = Live;
+	Health = NewHealth;
 }
 
-float UHealthComponent::GetCurrentHealth()
+float UHealthComponent::GetHealth()
 {
 	return Health;
 }
 
-void UHealthComponent::SetMaxHealth(float Mlive)
+void UHealthComponent::SetMaxHealth(float NewMaxHealth)
 {
-	MaxHealth = Mlive;
+	MaxHealth = NewMaxHealth;
 }
 
-float UHealthComponent::GetCurrentMaxHealth()
+float UHealthComponent::GetMaxHealth()
 {
 	return MaxHealth;
 }
@@ -45,8 +43,11 @@ float UHealthComponent::GetCurrentMaxHealth()
 void UHealthComponent::Heal(float Heal, AActor* Instigator)
 {
 	OnHealed.Broadcast(Heal, Instigator);
+	
 	Health = Health + Heal;
-	if (Health > MaxHealth) {
+	
+	if (Health > MaxHealth)
+	{
 		Health = MaxHealth;
 	}
 }
@@ -54,7 +55,9 @@ void UHealthComponent::Heal(float Heal, AActor* Instigator)
 void UHealthComponent::Regeneration()
 {
 	Heal(RegHealth);
-	if (Health == MaxHealth) {
+	
+	if (Health == MaxHealth)
+		{
 		StopRegeneration();
 	}
 }
@@ -75,10 +78,12 @@ void UHealthComponent::TakeDamage(float Damage, AActor* Instigator)
 
 	Health -= Damage;
 
-	if (Health < 0) {
+	if (Health < 0)
+	{
 		Health = 0;
 	}
-	if (Health == 0) {
+	if (Health == 0)
+	{
 		OnHealthEnd.Broadcast(Damage, Instigator);
 	}
 }

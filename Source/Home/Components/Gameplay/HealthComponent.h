@@ -17,31 +17,44 @@ public:
 	// Sets default values for this component's properties
 	UHealthComponent();
 
+	void  SetHealth(float NewHealth);
+	
+	float GetHealth();
+	
+	void  SetMaxHealth(float NewMaxHealth);
+	
+	float GetMaxHealth();
+	
+	void  Heal(float Heal, AActor* Instigator = nullptr);
+	
+	void  Regeneration();
+	
+	void  StartRegeneration();
+	
+	void  StopRegeneration();
+	
+	void  TakeDamage(float Damage, AActor* Instigator = nullptr);
+	
+	FHealthDelegate OnDamage;
+	FHealthDelegate OnHealthEnd;
+	FHealthDelegate OnHealed;
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	float Health;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	float MaxHealth;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	float RegHealth;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	float RegRate;
-public:
-	void  SetHealth(float Live);
-	float GetCurrentHealth();
-	void  SetMaxHealth(float Mlive);
-	float GetCurrentMaxHealth();
-	void  Heal(float Heal, AActor* Instigator = nullptr);
-	void  Regeneration();
-	void  StartRegeneration();
-	void  StopRegeneration();
-	void  TakeDamage(float Damage, AActor* Instigator = nullptr);
-	FHealthDelegate OnDamage;
-	FHealthDelegate OnHealthEnd;
-	FHealthDelegate OnHealed;
+	
 private:
 	FTimerHandle TimerRegHealth;
 };
