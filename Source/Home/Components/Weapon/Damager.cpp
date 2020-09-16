@@ -40,9 +40,9 @@ void UDamager::OnDetectorOverlaped(UPrimitiveComponent* OtherComp2, AActor* Othe
 		{
 			HealthComp->ApplyDamage(Damage, OtherActor->GetInstigator());
 
-			if (bDestroyOnOverlap)
+			if (bDestroyOwnerOnOverlap)
 			{
-				DestroyComponent();
+				GetOwner()->Destroy();
 			}
 		}
 	}

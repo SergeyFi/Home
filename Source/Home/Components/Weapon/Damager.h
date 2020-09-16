@@ -25,7 +25,7 @@ private:
 	float Damage;
 
 	UPROPERTY(EditAnywhere)
-	bool bDestroyOnOverlap;
+	bool bDestroyOwnerOnOverlap;
 
 	UPROPERTY(EditAnywhere)
 	UShapeComponent* Detector;
