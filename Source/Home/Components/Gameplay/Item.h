@@ -6,7 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "Item.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FItemData
 {
 	GENERATED_BODY()
@@ -31,6 +31,8 @@ class HOME_API UItem : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UItem();
+
+	FItemData GetItemData();
 
 protected:
 	// Called when the game starts

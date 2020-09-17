@@ -10,6 +10,11 @@ UItem::UItem()
 
 }
 
+FItemData UItem::GetItemData()
+{
+	return ItemProperties;
+}
+
 
 // Called when the game starts
 void UItem::BeginPlay()
